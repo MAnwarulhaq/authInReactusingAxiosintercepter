@@ -16,4 +16,4 @@ export const profileAPI = api.injectEndpoints({
     })
 })
 
-export const { useGetProfileQuery,useLoginMutation } = profileAPI
+export const { useGetProfileQuery, useLoginMutation } = profileAPI
