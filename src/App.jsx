@@ -4,13 +4,14 @@ import './App.css'
 import Login from './Login'
 import Profile from './Profile'
 import { Routes,Route } from 'react-router-dom'
+import Navbar from './Navbar'
 
 
 function App() {
 
   return (
     <>
-     
+     <Navbar/>
      <Routes>
       <Route path='/' element={ <Profile />}/>
       <Route path='/login' element={<Login/>}/>

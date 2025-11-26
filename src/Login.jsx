@@ -58,43 +58,47 @@ const Login = () => {
 
 
     return (
-        <div className='flex flex-col items-center justify-center m-10'>
-            <h1 className='bg-amber-600 text-2xl font-bold'>Handle Authorization</h1>
-            <h1> "email": "john@mail.com",
-                "password": "changeme"</h1>
-            <div className='bg-sky-500 w-70 p-5 rounded-2xl shadow-2xl'>
-                <p className='text-white font-semibold mb-4'>Login Page</p>
+          <div className="flex flex-col items-center justify-center m-10">
+      <h1 className="bg-amber-600 text-2xl font-bold">Handle Authorization</h1>
+      <h1>
+        "email": "john@mail.com", "password": "changeme"
+      </h1>
+      <div className="bg-sky-500 w-70 p-5 rounded-2xl shadow-2xl">
+        <p className="text-white font-semibold mb-4">Login Page</p>
 
-                <div className='mb-4'>
-                    <p className='text-white'>Email</p>
-                    <input
-                        type="email"
-                        placeholder='Enter Your Email'
-                        className='border shadow-md h-8 w-60 bg-white rounded-md p-3'
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                </div>
-
-                <div className='mb-4'>
-                    <p className='text-white'>Password</p>
-                    <input
-                        type="password"
-                        placeholder='Enter Your Password'
-                        className='border shadow-md h-8 w-60 bg-white rounded-md p-3'
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </div>
-
-                <button
-                    onClick={handlelogin}
-                    className='bg-blue-700 rounded-md px-4 py-1 cursor-pointer text-white'
-                >
-                    Login
-                </button>
-            </div>
+        <div className="mb-4">
+          <p className="text-white">Email</p>
+          <input
+            type="email"
+            placeholder="Enter Your Email"
+            className="border shadow-md h-8 w-60 bg-white rounded-md p-3"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </div>
+
+        <div className="mb-4">
+          <p className="text-white">Password</p>
+          <input
+            type="password"
+            placeholder="Enter Your Password"
+            className="border shadow-md h-8 w-60 bg-white rounded-md p-3"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+
+        <button
+          onClick={handlelogin}
+          disabled={isLoading}
+          className="bg-blue-700 rounded-md px-4 py-1 cursor-pointer text-white"
+        >
+          {isLoading ? "Logging in..." : "Login"}
+        </button>
+
+        {error && <p className="text-red-500 mt-2">Login Failed</p>}
+      </div>
+    </div>
     )
 }
 
