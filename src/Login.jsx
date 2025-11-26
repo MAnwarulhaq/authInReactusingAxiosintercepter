@@ -14,6 +14,7 @@ const Login = () => {
         api.post("/login", payload)
             .then((res) => {
                 if (res) {
+                    console.log(res)
                     localStorage.setItem("token", res.data.access_token)
 
                     alert("Login Successful")
