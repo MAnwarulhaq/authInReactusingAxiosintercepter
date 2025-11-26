@@ -1,37 +1,61 @@
 import React, { useState } from 'react'
 import { api } from './AxiosIntercepter'
+import { useLoginMutation } from './service/getprofile'
 
 const Login = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [login, { isLoading, error }] = useLoginMutation();
+    // login with intercepter
+    // function handlelogin() {
+    //     const payload = {
+    //         email,
+    //         password
+    //     }
 
-    function handlelogin() {
-        const payload = {
-            email,
-            password
+    //     api.post("/login", payload)
+    //         .then((res) => {
+    //             if (res) {
+    //                 console.log(res)
+    //                 localStorage.setItem("token", res.data.access_token)
+
+    //                 alert("Login Successful")
+    //             }
+    //             // console.log("Login Response:", res)
+    //             // Token ko stringify mat karo
+
+    //         })
+    //         .catch((error) => {
+    //             alert("Login Failed")
+    //             console.log("Login Error:", error.response?.data || error.message)
+    //         })
+
+    //     // Clear input fields
+    //     setEmail("")
+    //     setPassword("")
+    // }
+
+    //login with rtk query
+
+
+    const handlelogin = async () => {
+        try {
+            const res = await login({ email, password }).unwrap(); // unwrap gives plain response or throws error
+            console.log("Login Response:", res);
+
+            localStorage.setItem("token", res.access_token); // store token
+            alert("Login Successful");
+
+            // Clear inputs
+            setEmail("");
+            setPassword("");
+        } catch (err) {
+            console.log("Login Error:", err);
+            alert("Login Failed");
         }
+    };
 
-        api.post("/login", payload)
-            .then((res) => {
-                if (res) {
-                    console.log(res)
-                    localStorage.setItem("token", res.data.access_token)
 
-                    alert("Login Successful")
-                }
-                // console.log("Login Response:", res)
-                // Token ko stringify mat karo
-
-            })
-            .catch((error) => {
-                alert("Login Failed")
-                console.log("Login Error:", error.response?.data || error.message)
-            })
-
-        // Clear input fields
-        setEmail("")
-        setPassword("")
-    }
 
     return (
         <div className='flex flex-col items-center justify-center m-10'>
