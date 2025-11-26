@@ -1,30 +1,39 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { api } from './AxiosIntercepter'
+import { useGetProfileQuery } from './service/getprofile'
 
 const Profile = () => {
     const [profile,setProfile] = useState([])
-    function getdataprofile() {
+    const  {data,isError,isSuccess} = useGetProfileQuery()
+    // function getdataprofile() {
 
-            const token =  localStorage.getItem("token")
-            // const header = {
-            //     headers:  {
-            //         Authorization:` Bearer ${token}`
-            //     } 
-            // }
+    //         const token =  localStorage.getItem("token")
+    //         // const header = {
+    //         //     headers:  {
+    //         //         Authorization:` Bearer ${token}`
+    //         //     } 
+    //         // }
 
-            api.get("/profile")
-            .then((res)=>{
-                console.log(res)
-                setProfile(res.data)
-                // console.log("Profile Data",res)
-                alert("Profile Data get Successful")
-            })
-            .catch((error)=>{
-                alert("Profile Data get Fail")
+    //         api.get("/profile")
+    //         .then((res)=>{
+    //             console.log(res)
+    //             setProfile(res.data)
+    //             // console.log("Profile Data",res)
+    //             alert("Profile Data get Successful")
+    //         })
+    //         .catch((error)=>{
+    //             alert("Profile Data get Fail")
 
-            })
+    //         })
         
+    // }
+
+    function getdataprofile(){
+        
+        setProfile(data)
+        console.log("success",isSuccess)
+        console.log("error", isError)
     }
     console.log(profile)
     // useEffect(()=>{
