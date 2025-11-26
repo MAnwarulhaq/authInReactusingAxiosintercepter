@@ -5,7 +5,7 @@ import { useGetProfileQuery } from './service/getprofile'
 
 const Profile = () => {
     const [profile, setProfile] = useState([])
-    const { data,isLoading, isError, isSuccess } = useGetProfileQuery()
+    const { data, isLoading, isError, isSuccess } = useGetProfileQuery()
     // function getdataprofile() {
 
     //         const token =  localStorage.getItem("token")
@@ -45,20 +45,24 @@ const Profile = () => {
         alert("logout Success")
     }
     return (
-        <div>
+        <div className='p-5'>
             <button className='bg-green-700 text-white px-4 py-1' onClick={getdataprofile}>get profile data</button>
             <button className='bg-red-700 text-white px-2 py-1' onClick={handlelogout}>LogOut</button>
-          
+
             <h1>Profile</h1>
-              {isLoading && <h1>...loading</h1>}
-              {isError && <h1>error</h1>}
-            {
+            {isLoading && <h1>...loading</h1>}
+            {isError && <h1>error</h1>}
+            <p>
+                 {
                 profile.id
             }
-            {
+            </p>
+            <p>
+                  {
 
-                <img src={profile.avatar} alt="" />
+                <img src={profile.avatar} alt=""  className='rounded-full size-40'/>
             }
+            </p>
             <p>{profile.name}</p>
             <p>{profile.role}</p>
 
