@@ -54,17 +54,17 @@ const Profile = () => {
             {isError && <h1>error</h1>}
             <p>
                  {
-                profile.id
+                profile?.id
             }
             </p>
             <p>
                   {
 
-                <img src={profile.avatar} alt=""  className='rounded-full size-40'/>
+                <img src={profile?.avatar} alt=""  className='rounded-full size-40'/>
             }
             </p>
-            <p>{profile.name}</p>
-            <p>{profile.role}</p>
+            <p>{profile?.name}</p>
+            <p>{profile?.role}</p>
 
         </div>
     )

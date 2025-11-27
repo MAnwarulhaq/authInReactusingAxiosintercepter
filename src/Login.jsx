@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { api } from './AxiosIntercepter'
-import { useLoginMutation } from './service/getprofile'
+import { useLoginMutation } from './service/auth'
+// import { useLoginMutation } from './service/getprofile'
 
 const Login = () => {
   const [email, setEmail] = useState("")
@@ -40,7 +41,7 @@ const Login = () => {
 
   const handlelogin = async () => {
     try {
-      const res = await login({ email, password }).unwrap();
+      const res = await login({ email, password });
       console.log("Login Response:", res);
 
       localStorage.setItem("token", res.access_token);
