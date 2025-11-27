@@ -41,11 +41,15 @@ const Login = () => {
 
   const handlelogin = async () => {
     try {
-      const res = await login({ email, password });
+      const res = await login({ email, password }).unwrap();
       console.log("Login Response:", res);
 
-      localStorage.setItem("token", res.access_token);
-      alert("Login Successful");
+      if (res) {
+        localStorage.setItem("token", res.access_token);
+        alert("Login Successful");
+      }
+
+
 
       // Clear inputs
       setEmail("");
